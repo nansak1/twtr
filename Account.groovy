@@ -1,19 +1,20 @@
 package seng
 
 class Account {
+    String accountHandle
+    String fullName
+    String emailAddress
+    String accountPassword
 
-    String handle
-    String email
-    String password
-    String name
-    static hasMany = [messages:Message]
-
+    static hasMany=[followers:Account,following:Account]
 
     static constraints = {
-        handle nullable: false unique
-        email nullable: false unique
-        password nullable: false
-        name: nullable: false
+        accountHandle nullable:false, blank:false, unique:true
+        fullName nullable:false, blank:false
+        emailAddress nullable:false, blank:false, unique:true, email:true
+        accountPassword nullable:false, blank:false, size:8..16,matches:"^.(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*\$"
+
 
     }
+
 }

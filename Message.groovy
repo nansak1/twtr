@@ -2,10 +2,13 @@ package seng
 
 class Message {
 
-    Account account
-    String text
-    static belongsTo = Account
+    Account myAcc
+    String msgText
+    static belongsTo = [acc: Account]
 
     static constraints = {
+        msgText nullable: false, size:1..40, blank: false
     }
 }
+
+
